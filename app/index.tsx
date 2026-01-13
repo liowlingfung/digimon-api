@@ -1,48 +1,9 @@
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-
-interface Digimon {
-  href: string;
-  id: number;
-  image: string;
-  name: string;
-
-  level: DigimonStats["level"];
-  attribute: DigimonStats["attribute"];
-}
-
-interface DigimonStats{
-  level: string;
-  attribute: string;
-}
-
-const colorsByAttribute = {
-  vaccine: "green",
-  data: "blue",
-  virus: "red",
-  free:"lightblue",
-}
-
-const colorsByLevel = {
-  "n/a": "#780606",
-  "baby i": "white",
-  "baby ii": "white",
-  child: "lightgray",
-  adult: "lightgreen",
-  perfect: "lightblue",
-  ultimate: "pink",
-}
-
-const levelDesc = {
-  "n/a": "Level Unknown",
-  "baby i": "Fresh",
-  "baby ii": "In-Training",
-  child: "Rookie",
-  adult: "Champion",
-  perfect: "Ultimate",
-  ultimate: "Mega",
-}
+import { levelDesc } from "./utils/constants";
+import { colorsByAttribute, colorsByLevel } from "./utils/themes";
+import { Digimon } from "./utils/types";
 
 export default function Index() {
   const [digimonData, setDigimonData] = useState<Digimon[]>([]);
