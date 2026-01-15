@@ -1,4 +1,4 @@
-export interface Digimon {
+export type Digimon = {
   href: string;
   id: number;
   image: string;
@@ -8,7 +8,7 @@ export interface Digimon {
   attribute: DigimonStats["attribute"];
 }
 
-export interface DigimonStats{
+export type DigimonStats = {
   level: string;
   attribute: string;
 }
