@@ -8,37 +8,9 @@ export default function Index() {
   const [digimonData, setDigimonData] = useState<Digimon[]>([]);
 
   useEffect(() => {
-    fetchDigimonData();
+
   }, []);
 
-  async function fetchDigimonData() {
-    try {
-      const res = await fetch(
-        "https://digi-api.com/api/v1/digimon?pageSize=297"
-      );
-      const data = await res.json();
-
-      const detailedDigimon =  await Promise.all(
-        data.content.map(async (digimon: Digimon) => {
-          const res = await fetch(digimon.href);
-          const details = await res.json();
-          return {
-            name: digimon.name,
-            id: details.id,
-            image: details.images[0].href,
-            href: digimon.href,
-            level: details.levels.length > 0 ? details.levels[0].level : "N/A",
-            attribute: details.attributes.length > 0 ? details.attributes[0].attribute : "N/A",
-          };
-        })
-      )
-      // console.log(JSON.stringify(detailedDigimon, null, 2));
-
-      setDigimonData(detailedDigimon);
-    } catch (e) {
-      console.error("Error fetching digimon data:", e);
-    }
-  }
 
 
   return (

@@ -19,9 +19,7 @@ export default function Home() {
                     isLoading ?
                     (<>Loading...</>) :
                     data ? (
-                      <>
-                        {data}
-                      </>
+                          <>{data.name}</>
                     ) : <>Page is blank</>}
                 </View>
             </ScrollView>
